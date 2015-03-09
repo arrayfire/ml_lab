@@ -1,11 +1,13 @@
 CPP = g++
 
-deep:  deep_belief_net.cpp
-	$(CPP) -I/usr/local/include -o $@ $^ -L/usr/local/lib -lafcuda
+all: dbn
+
+dbn:  deep_belief_net.cpp mnist_common.h Makefile
+	$(CPP) -I/usr/local/include $< -L/usr/local/lib -lafcuda -o $@
 
 deep_solution: solution/deep_belief_net.cpp
-	$(CPP) -I. -I/usr/local/include -o $@ $^ -L/usr/local/lib -lafcuda
+	$(CPP) -I. -I/usr/local/include $^ -L/usr/local/lib -lafcuda -o $@
 
 hello: helloworld.cpp
-	$(CPP) -I/usr/local/include -o $@ $^ -L/usr/local/lib -lafcuda
+	$(CPP) -I/usr/local/include $^ -L/usr/local/lib -lafcuda -o $@
 

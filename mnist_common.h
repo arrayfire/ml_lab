@@ -140,12 +140,8 @@ static void display_results(af::array &test_images,
 #else
     using namespace af;
     for(int i = 0; i < num_display; i++) {
-        float val;
-        unsigned idx;
-        max(&val, &idx, test_output(span, i));
-        std::cout << "Predicted: " << idx << std::endl;
-        max(&val, &idx, test_actual(span, i));
-        std::cout << "Actual: " << idx << std::endl;
+        std::cout << "Predicted: " << classify<expand_labels>(test_output, i) << std::endl;
+        std::cout << "Actual: " << classify<expand_labels>(test_actual, i) << std::endl;
         unsigned char* img = (test_images(span, span, i) > 0.1f).as(u8).host<unsigned char>();
         for(int j = 0; j < 28; j++) {
             for(int k = 0; k < 28; k++) {

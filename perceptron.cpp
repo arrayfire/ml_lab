@@ -10,7 +10,7 @@ float accuracy(const array& predicted, const array& target)
     array val, plabels, tlabels;
     max(val, tlabels, target, 0);
     max(val, plabels, predicted, 0);
-    return 100 * count<float>(plabels == tlabels) / tlabels.elements();
+    return 100 * sum<float>(plabels == tlabels) / tlabels.elements();
 }
 
 // Activation function
